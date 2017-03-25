@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="IMG_1767" size="10.000000 10.080429" />
+    <ImageTarget name="IMG_1766" size="10.000000 10.046266" />
+    <ImageTarget name="IMG_0047" size="0.050000 0.088750" />
+    <CylinderTarget name="Varita" sideLength="8.900000"/>
+  </Tracking>
+</QCARConfig>
