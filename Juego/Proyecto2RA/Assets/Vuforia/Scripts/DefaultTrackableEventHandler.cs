@@ -20,6 +20,7 @@ namespace Vuforia
 
         #endregion // PRIVATE_MEMBER_VARIABLES
 
+        public GameObject Player;
 
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
@@ -83,6 +84,29 @@ namespace Vuforia
             }
 
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
+            if (transform.parent != null)
+            {
+                if (transform.parent.name == "Go")
+                {
+                    Player.GetComponent<MoveScript>().go = true;
+                }
+                else if (transform.parent.name == "Stop")
+                {
+                    Player.GetComponent<MoveScript>().go = false;
+                }
+                else if (transform.parent.name == "Left")
+                {
+                    Player.GetComponent<MoveScript>().turnL = true;
+                }
+                else if (transform.parent.name == "Right")
+                {
+                    Player.GetComponent<MoveScript>().turnR = true;
+                }
+            }
+            if (mTrackableBehaviour.TrackableName == "World")
+            {
+                Player.GetComponent<Rigidbody>().useGravity = true;
+            }
         }
 
 
@@ -104,6 +128,25 @@ namespace Vuforia
             }
 
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+
+            if (transform.parent != null)
+            {
+                if (transform.parent.name == "Left")
+                {
+                    Player.GetComponent<MoveScript>().turnL = false;
+                }
+                else if (transform.parent.name == "Right")
+                {
+                    Player.GetComponent<MoveScript>().turnR = false;
+                }else if(transform.parent.name == "Go")
+                {
+                    Player.GetComponent<MoveScript>().go = false;
+                }
+            }
+            if (mTrackableBehaviour.TrackableName == "World")
+            {
+                Player.GetComponent<Rigidbody>().useGravity = false;
+            }
         }
 
         #endregion // PRIVATE_METHODS
