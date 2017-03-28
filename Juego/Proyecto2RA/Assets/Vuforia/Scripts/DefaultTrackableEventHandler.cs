@@ -17,7 +17,7 @@ namespace Vuforia
         #region PRIVATE_MEMBER_VARIABLES
  
         private TrackableBehaviour mTrackableBehaviour;
-    
+
         #endregion // PRIVATE_MEMBER_VARIABLES
 
 
@@ -34,7 +34,6 @@ namespace Vuforia
         }
 
         #endregion // UNTIY_MONOBEHAVIOUR_METHODS
-
 
 
         #region PUBLIC_METHODS

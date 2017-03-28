@@ -4,27 +4,53 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour {
 
-    public float speed = 15.0f;
-    public float rotation = 5.0f;
-   
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public float m_Speed = 12f;                 // How fast the tank moves forward and back.
+    public float m_TurnSpeed = 180f;            // How fast the tank turns in degrees per second.
+
+    private Rigidbody m_Rigidbody;              // Reference used to move the Character.
+    private string m_MovementAxisName;          // The name of the input axis for moving forward and back.
+    private string m_TurnAxisName;              // The name of the input axis for turning.
+    private float m_MovementInputValue;         // The current value of the movement input.
+    private float m_TurnInputValue;             // The current value of the turn input.
+
+
+    // Use this for initialization
+    void Start () {
+        m_Rigidbody = GetComponent<Rigidbody>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += transform.forward * speed;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Rotate(0, -rotation, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(0, rotation, 0);
-        }
-	}
+        m_MovementInputValue = Input.GetAxis("Vertical");
+        Debug.Log(m_MovementInputValue);
+        m_TurnInputValue = Input.GetAxis("Horizontal");
+    }
+
+    private void FixedUpdate()
+    {
+        // Adjust the rigidbodies position and orientation in FixedUpdate.
+        Move();
+        Turn();
+    }
+
+    private void Move()
+    {
+        // Create a vector in the direction the tank is facing with a magnitude based on the input, speed and the time between frames.
+        Vector3 movement = transform.forward * m_MovementInputValue * m_Speed * Time.deltaTime;
+        
+        // Apply this movement to the rigidbody's position.
+        m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
+    }
+
+    private void Turn()
+    {
+        // Determine the number of degrees to be turned based on the input, speed and time between frames.
+        float turn = m_TurnInputValue * m_TurnSpeed * Time.deltaTime;
+
+        // Make this into a rotation in the y axis.
+        Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
+
+        // Apply this rotation to the rigidbody's rotation.
+        m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
+    }
 }

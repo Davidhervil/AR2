@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="IMG_1767" size="10.000000 10.080429" />
-    <ImageTarget name="IMG_1766" size="10.000000 10.046266" />
-    <ImageTarget name="IMG_0047" size="0.050000 0.088750" />
-    <CylinderTarget name="Varita" sideLength="8.900000"/>
+    <ImageTarget name="World" size="10.000000 10.000000" />
+    <ImageTarget name="Stop" size="10.000000 9.057143" />
+    <ImageTarget name="RIGHT" size="10.000000 5.681217" />
+    <ImageTarget name="LEFT" size="10.000000 6.782178" />
+    <ImageTarget name="Go" size="10.000000 9.920000" />
+    <CylinderTarget name="Varita2" sideLength="8.900000"/>
+    <CylinderTarget name="VaritaStriped" sideLength="8.900000"/>
   </Tracking>
 </QCARConfig>
