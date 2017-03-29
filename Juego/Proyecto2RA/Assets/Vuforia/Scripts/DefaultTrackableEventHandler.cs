@@ -103,7 +103,7 @@ namespace Vuforia
                     Player.GetComponent<MoveScript>().turnR = true;
                 }
             }
-            if (mTrackableBehaviour.TrackableName == "World")
+            if (mTrackableBehaviour.TrackableName == "World" )
             {
                 Player.GetComponent<Rigidbody>().useGravity = true;
             }
@@ -129,7 +129,7 @@ namespace Vuforia
 
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
 
-            if (transform.parent != null)
+            if (transform.parent != null && Player != null)
             {
                 if (transform.parent.name == "Left")
                 {
@@ -143,7 +143,7 @@ namespace Vuforia
                     Player.GetComponent<MoveScript>().go = false;
                 }
             }
-            if (mTrackableBehaviour.TrackableName == "World")
+            if (mTrackableBehaviour.TrackableName == "World" && Player != null)
             {
                 Player.GetComponent<Rigidbody>().useGravity = false;
             }
